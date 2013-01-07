@@ -20,6 +20,7 @@
     background.image = [UIImage imageNamed:@"about@2x.png"];
     background.backgroundColor = [UIColor clearColor];
     [self.view addSubview:background];
+    [background release];
     
     // HOME BUTTON
     UIImageView *home = [[UIImageView alloc] initWithFrame:CGRectMake(950, 700, 60, 54)];
@@ -30,6 +31,8 @@
     [home addGestureRecognizer:homeTap];
     [home setUserInteractionEnabled:YES];
     [homeTap release];
+    [home release];
+    
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

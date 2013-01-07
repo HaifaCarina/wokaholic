@@ -82,6 +82,8 @@
     [home addGestureRecognizer:homeTap];
     [home setUserInteractionEnabled:YES];
     [homeTap release];
+    [home release];
+    
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

@@ -63,7 +63,7 @@
                             @"read_stream",@"user_about_me", @"publish_stream", @"user_photos", @"email",
                             nil];
     [facebook authorize:permissions];
-    
+    [permissions release];
 }
 
 - (void) postParameters {
@@ -88,10 +88,21 @@
     
 }
 
+- (void)fbSessionInvalidated{
+    NSLog(@"fbSessionInvalidated");
+}
+
+- (void)fbDidNotLogin:(BOOL)cancelled {
+    NSLog(@"fbDidNotLogin");
+}
 - (void) fbDidLogout {
     NSLog(@"fbDidLogout ");
 }
 
+- (void)fbDidExtendToken:(NSString*)accessToken
+               expiresAt:(NSDate*)expiresAt {
+    NSLog(@"fbDidExtendToken ");
+}
 -(void)request:(FBRequest *)request didLoad:(id)result {
     NSLog(@"Request didLoad: %@ ", [request url ]);
     if ([result isKindOfClass:[NSArray class]]) {

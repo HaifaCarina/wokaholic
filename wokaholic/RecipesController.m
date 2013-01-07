@@ -74,6 +74,8 @@
     UIImageView *background = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"recipes-bg.png"]];
     background.backgroundColor = [UIColor clearColor];
     [self.view addSubview:background];
+    [background release];
+    
     
     //UILabel *appetizers = [[UILabel alloc] initWithFrame:CGRectMake(20 , 30, 150, 20 + 10)];
     appetizers = [[CustomUILabel alloc] initWithFrame:CGRectMake(20 , 20, 250, 30)];
@@ -125,6 +127,7 @@
     [home addGestureRecognizer:homeTap];
     [home setUserInteractionEnabled:YES];
     [homeTap release];
+    [home release];
     
     appetizersArray = [NSArray arrayWithObjects:
                                 [UIImage imageNamed:@"thumb-appetizer-1.png"],
@@ -199,7 +202,7 @@
     NSLog(@"Did select item at index %d", index); // sample
     
     PDFViewController *aController = [[PDFViewController alloc]init];
-    NSString *filename;
+    NSString *filename = @"";
     switch (_carousel.tag) {
         case 1:
         {
@@ -247,6 +250,7 @@
             break;
         }
     }
+    return 0;
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -261,7 +265,7 @@
 - (UIView *)carousel:(iCarousel *)_carousel viewForItemAtIndex:(NSUInteger)index
 {
     NSLog(@"CAROUSEL TAG: %d", _carousel.tag);
-    UIImage *image;
+    UIImage *image = nil;
     switch (_carousel.tag) {
         case 1:
         {

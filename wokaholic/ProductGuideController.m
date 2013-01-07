@@ -12,7 +12,7 @@
 @implementation ProductGuideController
 
 - (NSString *) getProductId: (NSInteger) tag {
-    NSString *productId;
+    NSString *productId = @"";
     switch (tag) {
         case 1:
             productId = [NSString stringWithFormat:@"free-standing-cookers"];
@@ -477,6 +477,7 @@
     [cookingRanges addGestureRecognizer:cookingRangesTap];
     [cookingRanges setUserInteractionEnabled:YES];
     [cookingRangesTap release];
+    [cookingRanges release];
     
     // Builtin Ovens
     UIImageView *builtInOvens = [[UIImageView alloc] initWithFrame:CGRectMake(340 + 140, 11, 140, 30)];
@@ -487,6 +488,7 @@
     [builtInOvens addGestureRecognizer:builtInOvensTap];
     [builtInOvens setUserInteractionEnabled:YES];
     [builtInOvensTap release];
+    [builtInOvens release];
     
     // hobs
     UIImageView *hobs = [[UIImageView alloc] initWithFrame:CGRectMake(340 + 140 + 140, 11, 70, 30)];
@@ -497,6 +499,7 @@
     [hobs addGestureRecognizer:hobsTap];
     [hobs setUserInteractionEnabled:YES];
     [hobsTap release];
+    [hobs release];
     
     // Hoods
     UIImageView *hoods = [[UIImageView alloc] initWithFrame:CGRectMake(340 + 140 + 140 + 70, 11, 70, 30)];
@@ -507,6 +510,7 @@
     [hoods addGestureRecognizer:hoodsTap];
     [hoods setUserInteractionEnabled:YES];
     [hoodsTap release];
+    [hoods release];
     
     // microwaveOvens
     UIImageView *microwaveOvens = [[UIImageView alloc] initWithFrame:CGRectMake(340 + 140 + 140 +70 +80, 11, 140, 30)];
@@ -517,6 +521,7 @@
     [microwaveOvens addGestureRecognizer:microwaveOvensTap];
     [microwaveOvens setUserInteractionEnabled:YES];
     [microwaveOvensTap release];
+    [microwaveOvens release];
     
     // dishwashers
     UIImageView *dishwashers = [[UIImageView alloc] initWithFrame:CGRectMake(340 + 140 + 140 +70 + 80 + 140, 11, 100, 30)];
@@ -527,6 +532,7 @@
     [dishwashers addGestureRecognizer:dishwashersTap];
     [dishwashers setUserInteractionEnabled:YES];
     [dishwashersTap release];
+    [dishwashers release];
     
     main = [[UILabel alloc]initWithFrame:CGRectMake(10, 91, 200, 40)];
     main.text = @"Cooking Ranges";
@@ -814,6 +820,7 @@
     [home addGestureRecognizer:homeTap];
     [home setUserInteractionEnabled:YES];
     [homeTap release];
+    [home release];
     
     currentProduct = 1;
     

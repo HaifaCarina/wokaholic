@@ -27,22 +27,6 @@
         [currentDevice endGeneratingDeviceOrientationNotifications];
 }
 
-- (UIImage*) maskImage:(UIImage *)image withMask:(UIImage *)maskImage {
-    
-	CGImageRef maskRef = maskImage.CGImage;
-    
-	CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
-                                        CGImageGetHeight(maskRef),
-                                        CGImageGetBitsPerComponent(maskRef),
-                                        CGImageGetBitsPerPixel(maskRef),
-                                        CGImageGetBytesPerRow(maskRef),
-                                        CGImageGetDataProvider(maskRef), NULL, false);
-    
-	CGImageRef masked = CGImageCreateWithMask([image CGImage], mask);
-	return [UIImage imageWithCGImage:masked];
-    
-}
-
 - (void) createSnapshot {
     
     shootButton.hidden = YES;
@@ -94,8 +78,8 @@
 
 - (void) changeDetails {
     
-    NSString *gender;
-    NSString *dish;
+    NSString *gender = @"";
+    NSString *dish = @"";
     
     switch ([genderOptions selectedSegmentIndex]) {
         case 0:
@@ -262,6 +246,8 @@
     [home addGestureRecognizer:homeTap];
     [home setUserInteractionEnabled:YES];
     [homeTap release];
+    [home release];
+    
     
     // BACK BUTTON
     back = [[UIImageView alloc] initWithFrame:CGRectMake(880, 700, 60, 54)];
