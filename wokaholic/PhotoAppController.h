@@ -25,7 +25,8 @@
     UIActivityIndicatorView *spinner;
     UIImageView *back;
     UIImage *currentBackground;
-    UIImage *currentPhoto;
+    //UIImage *currentPhoto;
+    UIImageView *currentPhoto;
     
     UIScrollView *photoScrollView;
     UIImageView *photoCaptured;
@@ -36,6 +37,7 @@
 @property (nonatomic, retain) UIImageView *snapshot;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @property (nonatomic, retain) UILabel *pleaseWait;
-
+//@property (nonatomic, retain) UIImage *currentPhoto;
+@property (nonatomic, retain) UIImageView *currentPhoto;
 
 @end

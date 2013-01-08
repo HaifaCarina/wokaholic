@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 
 @implementation PhotoAppController
-@synthesize imgPicker, snapshot, spinner, pleaseWait;//, facebook; //, scrollView;
+@synthesize imgPicker, snapshot, spinner, pleaseWait, currentPhoto; //, facebook; //, scrollView;
 
 - (void) tappedHome {
     [self.navigationController popViewControllerAnimated:YES];
@@ -18,13 +18,13 @@
 
 - (void) shoot{
     
-    
     [self presentModalViewController:imgPicker animated:YES];
     
     UIDevice *currentDevice = [UIDevice currentDevice];
     
     while ([currentDevice isGeneratingDeviceOrientationNotifications])
         [currentDevice endGeneratingDeviceOrientationNotifications];
+    
 }
 
 - (void) createSnapshot {
@@ -62,7 +62,7 @@
 
 - (void) tappedBack {
     NSLog(@"tapped back %@", currentPhoto);
-    photoCaptured.image = currentPhoto;
+    photoCaptured.image = currentPhoto.image;
     background.image = currentBackground;
     background.backgroundColor = [UIColor clearColor];
     snapshot.hidden = YES;
@@ -133,8 +133,6 @@
 
 - (void) loadView {
     NSLog(@"loadView");
-    
-    
     [super loadView];
     
     imgPicker = [[UIImagePickerController alloc] init];
@@ -179,7 +177,8 @@
     
     
     currentBackground = [UIImage imageNamed:@"photoapp-male-parmesan-crusted-fish.png"];
-    currentPhoto = [UIImage imageNamed:@"photoapp-male-parmesan-crusted-fish.png"]; //[[UIImage alloc]init];//
+    //currentPhoto = [UIImage imageNamed:@"photoapp-male-parmesan-crusted-fish.png"]; //[[UIImage alloc]init];//
+    currentPhoto = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photoapp-male-parmesan-crusted-fish.png"]]; //[[UIImage alloc]init];//
     
     shareButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[shareButton addTarget:self  action:@selector(createSnapshot) forControlEvents:UIControlEventTouchDown];
@@ -291,13 +290,14 @@
     
     photoCaptured.image = flippedImage; //img;
     photoScrollView.contentSize = CGSizeMake((img.size.width*5) + img.size.width, (img.size.height*5) + img.size.height);
-    currentPhoto = photoCaptured.image; //img;
+    //currentPhoto = photoCaptured.image; //img;
+    currentPhoto.image = photoCaptured.image; //img;
     //photo.image = img;
     //photo.hidden = NO;
     background.hidden = NO;
     imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
 	[imgPicker dismissModalViewControllerAnimated:YES];
-    [imgPicker release];
+   // [imgPicker release];
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
